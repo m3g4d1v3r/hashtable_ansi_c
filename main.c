@@ -1,3 +1,4 @@
+#include <assert.h>
 #include "hashtable.h"
 
 int main() {
@@ -18,12 +19,36 @@ int main() {
     };
     size_t array_len = sizeof(groceries_array) / sizeof(pair_t);
 
+    // Allocate
     dictionary = hashtable_create();
+
+    // Write
     for (size_t idx = 0; idx < array_len; idx++) {
         hashtable_write(dictionary, groceries_array[idx].key,
                                     groceries_array[idx].value);
     }
+    // Print everything
     hashtable_print(dictionary);
+
+    // Test 1 - Existing Pair
+    pair_t expected_1 = {"Eggs", 2.20};
+    pair_t *result_1 = hashtable_read(dictionary, "Eggs");
+    assert(result_1 != NULL);
+    assert(strcmp(result_1->key, expected_1.key) == 0);
+    assert(result_1->value == expected_1.value);
+
+    // Test 2 - Existing Key, But different Value
+    pair_t expected_2 = {"Potatoes", 1.70};
+    pair_t *result_2 = hashtable_read(dictionary, "Potatoes");
+    assert(result_2 != NULL);
+    assert(strcmp(result_2->key, expected_2.key) == 0);
+    assert(result_2->value != expected_2.value);
+
+    // Test 3 - Non Existing Pair
+    pair_t *result_3 = hashtable_read(dictionary, "Cheese");
+    assert(result_3 == NULL);
+
+    // De-allocate
     hashtable_delete(dictionary);
     return (0);
 }
