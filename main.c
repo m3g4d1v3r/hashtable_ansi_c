@@ -31,7 +31,7 @@ int main() {
     hashtable_print(dictionary);
 
     // Test 1 - Existing Pair
-    pair_t expected_1 = {"Eggs", 2.20};
+    pair_t expected_1 = {"Eggs", 11.50};
     pair_t *result_1 = hashtable_read(dictionary, "Eggs");
     assert(result_1 != NULL);
     assert(strcmp(result_1->key, expected_1.key) == 0);
