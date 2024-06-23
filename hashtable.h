@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-// The choice of implementation of the hashtable is a simple stack allocated array
+// The choice of implementation of the hashtable is a simple fixed sized array
 // that supports entries for heap allocated linked lists. However other choices
 // could be made here as well...
 
