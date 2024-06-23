@@ -5,7 +5,6 @@ CFLAGS = -Wall -Wextra
 TARGET = hashtable_exe 
 OBJS = hashtable.o main.o
 VALGRIND = valgrind --leak-check=full --track-origins=yes
-DISTFILES = hashtable.c hashtable.h main.c Makefile configure
 
 all: $(TARGET)
 
@@ -22,16 +21,10 @@ valgrind: $(TARGET)
 	$(VALGRIND) ./$(TARGET)
 
 check: valgrind
-	./$(TARGET) && echo "All tests passed."
-
-distcheck: check
-	mkdir -p dist
-	cp $(DISTFILES) dist/
-	cd dist && tar czf ../$(TARGET).tar.gz *
-	rm -rf dist
+	./$(TARGET) && echo "Everything is ok memory-wise."
 
 clean:
 	rm -f $(TARGET) $(OBJS)
 
-.PHONY: all clean valgrind check distcheck
+.PHONY: all clean valgrind check
 
