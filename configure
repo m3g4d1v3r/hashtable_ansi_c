@@ -1,0 +1,27 @@
+#!/bin/sh
+
+echo "Configuring the build environment..."
+
+if command -v gcc >/dev/null 2>&1; then
+    echo "Found gcc."
+else
+    echo "Error: gcc not found. Please install gcc and try again."
+    exit 1
+fi
+
+if command -v valgrind >/dev/null 2>&1; then
+    echo "Found valgrind."
+else
+    echo "Warning: valgrind not found. Valgrind target will not work."
+fi
+
+echo "Generating config.mk..."
+
+cat <<EOL > config.mk
+# Configuration file for Makefile
+CC = gcc
+CFLAGS = -Wall -Wextra
+VALGRIND = valgrind --leak-check=full --track-origins=yes
+EOL
+
+echo "Configuration complete. You can now run 'make'."

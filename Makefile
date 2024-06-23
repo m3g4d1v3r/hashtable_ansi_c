@@ -1,3 +1,5 @@
+-include config.mk
+
 CC = gcc
 CFLAGS = -Wall -Wextra
 TARGET = hashtable_exe 
