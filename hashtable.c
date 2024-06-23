@@ -55,8 +55,20 @@ void hashtable_write(hashtable_t *map, char *key, double value) {
 // Read operation: this function reads a key-value pair from the
 // hashtable structure
 pair_t *hashtable_read(hashtable_t *map, char *key) {
+    entry_t *ptr;
+
     if (map == NULL) return NULL;
-    return (map->array[hash(key)]);
+    if (map->array[hash(key)] == NULL) return NULL;
+    // Performs a linked-list traversal in order to search for the
+    // provided key
+    ptr = map->array[hash(key)];
+    while (ptr != NULL) {
+        if (strcmp(ptr->content.key, key) == 0)
+            return (&ptr->content);
+        ptr = ptr->next;
+    }
+    // If not found, return NULL
+    return (NULL);
 }
 
 // This function prints all of the key-value pairs of the hashtable

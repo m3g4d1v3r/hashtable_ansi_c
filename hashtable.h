@@ -6,6 +6,7 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 // The choice of implementation of the hashtable is a simple stack allocated array
 // that supports entries for heap allocated linked lists. However other choices
@@ -35,7 +36,7 @@ hashtable_t *hashtable_create();
 
 // Here are the hashtabl's write and read functions
 void hashtable_write(hashtable_t *map, char *key, double value);
-entry_t *hashtable_read(hashtable_t *map, char *key);
+pair_t *hashtable_read(hashtable_t *map, char *key);
 
 // Here is the print to the console's output
 void hashtable_print(hashtable_t *map);
