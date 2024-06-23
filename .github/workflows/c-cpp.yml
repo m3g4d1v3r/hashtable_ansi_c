@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: apt install dependency
-      run: sudo apt-get -y install valgrind
+      run: sudo apt update && sudo apt-get -y install valgrind
     - name: configure
       run: ./configure
     - name: make
