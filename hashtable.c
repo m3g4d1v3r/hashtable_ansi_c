@@ -41,7 +41,7 @@ void hashtable_write(hashtable_t *map, char *key, double value) {
     // would mitigate the hashtable collision.
     ptr = map->array[new_idx];
     while (ptr != NULL) {
-        if (ptr->content.key == key) return;
+        if (strcmp(ptr->content.key, key) == 0) return;
         ptr_ptr = &ptr->next;
         ptr = ptr->next;
     }
