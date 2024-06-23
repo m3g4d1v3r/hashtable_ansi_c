@@ -5,6 +5,8 @@ CFLAGS = -Wall -Wextra
 TARGET = hashtable_exe 
 OBJS = hashtable.o main.o
 VALGRIND = valgrind --leak-check=full --track-origins=yes
+SUCCESS_MSG = "Functionality tests were validated" \
+              "and everything is ok memory-wise."
 
 all: $(TARGET)
 
@@ -21,7 +23,7 @@ valgrind: $(TARGET)
 	$(VALGRIND) ./$(TARGET)
 
 check: valgrind
-	./$(TARGET) && echo "Everything is ok memory-wise."
+	./$(TARGET) && echo $(SUCCESS_MSG)
 
 clean:
 	rm -f $(TARGET) $(OBJS)
