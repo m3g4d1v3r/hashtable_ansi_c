@@ -7,9 +7,13 @@ The status of the current compiling of the project can be seen in the `Actions` 
 Also, in order to change the Hashtable's array size for testing purposes: just change the macro `ARRAYMAX` to the desired size (the default is 50).
 
 To compile and run in your linux machine, just clone the repository to your local folder and:
+
 `$ cd hashtable_ansi_c`
+
 `$ ./configure`
+
 and then
+
 `$ make check`
 
 The last command will perform asserts of the hashtable's functionality while also performing memory checks with valgrind.
